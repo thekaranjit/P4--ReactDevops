@@ -19,13 +19,13 @@ app.use(
 // Set up a port
 const PORT = process.env.PORT || 3000;
 
-// db info
+// db info --- Will recieved after creating SQL Server on Azure
 const config = {
-  user: "", // better stored in an app setting such as process.env.DB_USER
-  password: "", // better stored in an app setting such as process.env.DB_PASSWORD
-  server: "enter your server name", // better stored in an app setting such as process.env.DB_SERVER
+  user: "admin123", // better stored in an app setting such as process.env.DB_USER
+  password: "Alliswell@14", // better stored in an app setting such as process.env.DB_PASSWORD
+  server: "reaceapp-server.database.windows.net", // better stored in an app setting such as process.env.DB_SERVER
   port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
-  database: "enter your db name", // better stored in an app setting such as process.env.DB_NAME
+  database: "Person", // better stored in an app setting such as process.env.DB_NAME
   authentication: {
     type: "default",
   },
@@ -40,7 +40,7 @@ app.get("/customerInfo", (req, res) => {
   const data = req;
   sql.connect(config, function () {
     var request = new sql.Request();
-    request.query("select * from demo", function (err, recordset) {
+    request.query("select * from Person", function (err, recordset) {
       if (err) console.log(err);
       // res.end(JSON.stringify(recordset)); // Result in JSON format
       res.send(recordset);
