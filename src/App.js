@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://victorious-forest-0c0f4ba00.1.azurestaticapps.net/customerInfo" // Replace with your actual API endpoint
+        "react-backend.azurewebsites.net/customerInfo" // Replace with your actual API endpoint
       )
       .then((response) => {
         console.log(response.data && response.data.recordset);
